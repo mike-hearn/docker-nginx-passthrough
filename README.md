@@ -13,6 +13,7 @@ starting the container.
 Example:
 
 ```
-$ docker run --rm -p 3000:80 -e PASSTHROUGH_HOST=https://en.wikipedia.org mikehearn/nginx-passthrough
+$ docker run -d --rm --name nginx_passthrough -p 3000:80 -e PASSTHROUGH_HOST=https://en.wikipedia.org mikehearn/nginx-passthrough
 $ curl "http://localhost:3000/w/api.php?action=query&titles=Docker%20(software)&prop=revisions&rvprop=content&format=json"
+$ docker stop nginx_passthrough
 ```
