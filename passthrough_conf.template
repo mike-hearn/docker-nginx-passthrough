@@ -1,6 +1,7 @@
 server {
 	listen 80;
 	server_name default;
+    proxy_ssl_server_name on;
 
 	location / {
 		proxy_pass $PASSTHROUGH_HOST;

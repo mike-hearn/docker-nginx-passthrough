@@ -10,10 +10,20 @@ CORS errors when doing development, among other things.
 This container requires a `$PASSTHROUGH_HOST` environment variable when
 starting the container.
 
+This example uses the useful service
+[JSONPlaceholder](https://jsonplaceholder.typicode.com/) as its sample
+passthrough API.
+
 Example:
 
 ```
-$ docker run -d --rm --name nginx_passthrough -p 3000:80 -e PASSTHROUGH_HOST=https://en.wikipedia.org mikehearn/nginx-passthrough
-$ curl "http://localhost:3000/w/api.php?action=query&titles=Docker%20(software)&prop=revisions&rvprop=content&format=json"
+$ docker run -d --rm \
+    --name nginx_passthrough \
+    -p 3000:80 \
+    -e PASSTHROUGH_HOST=https://jsonplaceholder.typicode.com \
+    mikehearn/nginx-passthrough
+
+$ curl http://localhost:3000/posts/1
+
 $ docker stop nginx_passthrough
 ```
